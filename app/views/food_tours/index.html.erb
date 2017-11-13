@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row">
+
+    <% @food_tours.each do |food_tour| %>
+
+      <div class="col-xs-12 col-sm-6 col-lg-4">
+        <%= link_to food_tour_path(food_tour) do %>
+          <div class="card card-link" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url( '<%= cl_image_path(food_tour.photo? ? food_tour.photo : 'fysedljjycu4kwcqsasb') %>' );">
+
+              <h1><%= food_tour.title %></h1>
+
+          </div>
+        <% end %>
+      </div>
+
+    <% end %>
+
+  </div>
+</div>

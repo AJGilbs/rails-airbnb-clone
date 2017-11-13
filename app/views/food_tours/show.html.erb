@@ -1,0 +1,25 @@
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url( <%= @food_tour.photo %> );">
+    <h1><%= @food_tour.title %></h1>
+</div>
+
+<div class="container">
+  <div class="wrapper">
+
+    <div class="card-show">
+      <h3>Description</h3>
+      <h4><%= @food_tour.description %></h4>
+
+      <%= link_to "Edit the description", edit_food_tour_path(@food_tour), class: "btn btn-info" %>
+
+    </div>
+
+
+          </li>
+        </ul>
+      <% end %>
+       <% end %>
+    </div>
+
+  </div>
+</div>
+
