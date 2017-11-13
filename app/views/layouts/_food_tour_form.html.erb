@@ -1,0 +1,11 @@
+<!-- form form food_tour -->
+
+<%= simple_form_for @food_tour do |f| %>
+  <%= f.input :title %>
+  <%= f.input :description %>
+  <%= f.input :city %>
+  <%= f.input :price %>
+  <%= f.input :dates %>
+  <%= f.input :cuisine %>
+  <%= f.button :submit, class: 'btn btn-primary' %>
+<% end %>
