@@ -1,3 +1,44 @@
 class FoodToursController < ApplicationController
+  before_action :set_food_tour, only: [:show, :edit, :update]
 
+  def index
+    @food_tours = Food_tour.all
+  end
+
+  def show
+
+  end
+
+  def new
+    @food_tour = Food_tour.new
+  end
+
+  def create
+    @food_tour = Food_tour.new(food_tour_params)
+    if @food_tour.save
+      redirect_to food_tour_path
+    else
+      render 'new'
+    end
+  end
+
+  def update
+    @food_tour.update(food_tour_params)
+    redirect_to food_tour_path
+  end
+
+  def edit
+
+  end
+
+  private
+
+  def set_food_tour
+    @food_tour = Food_tour.find(params[:id])
+  end
+
+  def food_tour_params
+    params.require(:food_tour).permit(:title, :description, :city, :price, :dates, :cuisine)
+  end
 end
+
