@@ -6,7 +6,6 @@ class FoodToursController < ApplicationController
   end
 
   def show
-
   end
 
   def new
@@ -16,7 +15,7 @@ class FoodToursController < ApplicationController
   def create
     @food_tour = FoodTour.new(food_tour_params)
     if @food_tour.save
-      redirect_to food_tour_path
+      redirect_to food_tour_path(@food_tour)
     else
       render 'new'
     end
@@ -28,7 +27,6 @@ class FoodToursController < ApplicationController
   end
 
   def edit
-
   end
 
   private
