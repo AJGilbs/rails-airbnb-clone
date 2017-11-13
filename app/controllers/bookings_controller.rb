@@ -34,7 +34,7 @@ class BookingsController < ApplicationController
   # end
 
   def set_food_tour
-    @food_tour = Food_tour.find(params[:food_tour_id])
+    @food_tour = FoodTour.find(params[:food_tour_id])
   end
 
 end
