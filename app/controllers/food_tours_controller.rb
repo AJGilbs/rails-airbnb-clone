@@ -1,20 +1,27 @@
 class FoodToursController < ApplicationController
-  before_action :set_food_tour, only: [:show, :edit, :update]
+  before_action :set_food_tour, only: [:show, :edit, :update, :destroy]
 
   def index
-    @food_tours = FoodTour.all
+    if params[:q]
+      @food_tours = policy_scope(FoodTour).where('city iLIKE ?', "%#{params[:q]}%")
+    else
+      @food_tours = policy_scope(FoodTour)
+    end
   end
 
   def show
+    authorize @food_tour
   end
 
   def new
     @food_tour = FoodTour.new
+    authorize @food_tour
   end
 
   def create
     @food_tour = FoodTour.new(food_tour_params)
     @food_tour.user_id = current_user.id
+    authorize @food_tour
     if @food_tour.save
       redirect_to food_tour_path(@food_tour)
     else
@@ -23,11 +30,19 @@ class FoodToursController < ApplicationController
   end
 
   def update
+    authorize @food_tour
     @food_tour.update(food_tour_params)
     redirect_to food_tour_path
   end
 
   def edit
+    authorize @food_tour
+  end
+
+  def destroy
+    authorize @food_tour
+    @food_tour.destroy
+    redirect_to root_path
   end
 
   private
@@ -37,7 +52,7 @@ class FoodToursController < ApplicationController
   end
 
   def food_tour_params
-    params.require(:food_tour).permit(:title, :description, :city, :price, :dates, :cuisine, :photo, :photo_cache)
+    params.require(:food_tour).permit(:title, :description, :city, :price, :dates, :cuisine, :photo, :photo_cache, :search)
   end
 end
 
