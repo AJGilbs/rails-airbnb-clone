@@ -1,11 +1,17 @@
-<%= simple_form_for @food_tour do |f| %>
-  <%= f.input :title %>
-  <%= f.input :description %>
-  <%= f.input :city %>
-  <%= f.input :price %>
-  <%= f.input :dates %>
-  <%= f.input :cuisine %>
-  <%= f.input :photo %>
-  <%= f.input :photo_cache, as: :hidden %>
-  <%= f.button :submit, class: 'btn btn-primary' %>
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
+      <%= simple_form_for @food_tour do |f| %>
+        <%= f.input :title %>
+        <%= f.input :description %>
+        <%= f.input :city %>
+        <%= f.input :price %>
+        <%= f.input :dates %>
+        <%= f.input :cuisine %>
+        <%= f.input :photo %>
+        <%= f.input :photo_cache, as: :hidden %>
+        <%= f.button :submit, class: 'btn btn-primary' %>
+      <% end %>
+    </div>
+  </div>
+</div>
