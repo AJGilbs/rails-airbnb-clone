@@ -4,7 +4,11 @@
   <div class="banner-content">
     <h1>Welcome to Devour food tours</h1>
     <p>Find a food tour</p>
-    <a class="btn btn-primary btn-lg">Start now</a>
+    <%= form_tag(food_tours_path, method: :get, :class => 'form-inline') do %>
+      <%= text_field_tag :q, nil, class: 'form-control search-style' %>
+      <%= submit_tag 'Search', class: 'btn btn-primary' %>
+    <% end %>
+    <!-- <a class="btn btn-primary btn-lg">Start now</a> -->
   </div>
 </div>
 

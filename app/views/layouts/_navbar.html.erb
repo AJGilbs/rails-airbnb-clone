@@ -4,6 +4,12 @@
     <%= image_tag "cooking.svg", class: "" %>
   </a>
 
+  <% unless params[:controller] == 'pages' && params[:action] == 'home' %>
+    <%= form_tag(food_tours_path, method: :get, :class => 'form-inline') do %>
+      <%= text_field_tag :q, nil, class: 'form-control nav-search-style' %>
+      <%= submit_tag 'Search', class: 'btn btn-primary' %>
+    <% end %>
+  <% end %>
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
 

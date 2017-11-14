@@ -2,7 +2,11 @@ class FoodToursController < ApplicationController
   before_action :set_food_tour, only: [:show, :edit, :update]
 
   def index
-    @food_tours = FoodTour.all
+      if params[:q]
+      @food_tours = FoodTour.where('city iLIKE ?', "%#{params[:q]}%")
+    else
+      @food_tours = FoodTour.all
+    end
   end
 
   def show
@@ -37,7 +41,7 @@ class FoodToursController < ApplicationController
   end
 
   def food_tour_params
-    params.require(:food_tour).permit(:title, :description, :city, :price, :dates, :cuisine, :photo, :photo_cache)
+    params.require(:food_tour).permit(:title, :description, :city, :price, :dates, :cuisine, :photo, :photo_cache, :search)
   end
 end
 
