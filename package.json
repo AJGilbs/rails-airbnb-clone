@@ -6,8 +6,8 @@
     "bootstrap": "3",
     "coffeescript": "1.12.7",
     "jquery": "^3.2.1",
-    "typed.js": "^2.0.6"
-    "flatpickr": "^4.1.0",
+    "typed.js": "^2.0.6",
+    "flatpickr": "^4.1.0"
   },
   "devDependencies": {
     "webpack-dev-server": "^2.9.4"
