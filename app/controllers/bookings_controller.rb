@@ -1,6 +1,7 @@
 class BookingsController < ApplicationController
   before_action :set_food_tour, only: [ :create ]
 
+
   def edit
    @booking = Booking.find(params[:id])
   end
@@ -18,7 +19,8 @@ class BookingsController < ApplicationController
   end
 
   def create
-     @booking = Booking.new()
+     @booking = Booking.new(booking_params)
+     @booking.user = current_user
      @booking.food_tour = @food_tour
      if @booking.save
       redirect_to root_path
@@ -29,9 +31,9 @@ class BookingsController < ApplicationController
 
   private
 
-  # def booking_params
-  #   params.require(:booking).permit()
-  # end
+  def booking_params
+    params.require(:booking).permit(:date)
+  end
 
   def set_food_tour
     @food_tour = FoodTour.find(params[:food_tour_id])

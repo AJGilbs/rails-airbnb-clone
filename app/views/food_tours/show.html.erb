@@ -9,10 +9,18 @@
       <h3>Dates: <%= @food_tour.dates %></h3>
       <h3>Description</h3>
       <p><%= @food_tour.description %></p>
-
     </div>
 
+<h2>Create booking</h2>
+   <div class="card">
+     <%= simple_form_for [@food_tour, @booking] do |f| %>
+        <%= f.input :date, as: :string, required: false, input_html: {class: "datepicker"} %>
+      <%= f.button :submit, class: 'btn btn-primary' %>
+    <% end %>
+   </div>
   </div>
 </div>
 
 <%= cl_image_tag @food_tour.photo %>
+
+
