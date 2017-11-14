@@ -12,11 +12,10 @@
   <% end %>
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
-
-    <a href="" class="navbar-wagon-item navbar-wagon-link">Host</a>
-    <a href="" class="navbar-wagon-item navbar-wagon-link">Trips</a>
-    <a href="" class="navbar-wagon-item navbar-wagon-link">Messages</a>
-
+    <% if user_signed_in? %>
+      <a href="" class="navbar-wagon-item navbar-wagon-link">Host a tour</a>
+      <a href="" class="navbar-wagon-item navbar-wagon-link">Trips</a>
+      <a href="" class="navbar-wagon-item navbar-wagon-link">Messages</a>
     <!-- Profile picture with dropdown list -->
     <div class="navbar-wagon-item">
       <div class="dropdown">
@@ -27,11 +26,14 @@
           <li><a href="#">Profile</a></li>
           <li><a href="#">Dashboard</a></li>
           <li><a href="/food_tours/new">Add a foodtour</a></li>
-          <li><a href="/users/sign_in">Log in</a></li>
-          <li><a href="/users/sign_out">Log Out</a></li>
+          <%= link_to "Log out", destroy_user_session_path, method: :delete, class: 'log-out' %>
         </ul>
       </div>
     </div>
+    <% else %>
+      <%= link_to "Sign In", new_user_session_path, class: 'btn btn-primary sign-in' %>
+      <%= link_to "Sign Up", new_user_registration_path, class: 'btn btn-primary sign-up' %>
+    <% end %>
   </div>
 
   <!-- Dropdown appearing on mobile only -->
@@ -46,3 +48,4 @@
     </div>
   </div>
 </div>
+
