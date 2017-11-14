@@ -12,8 +12,8 @@
       <p><%= @food_tour.description %></p>
 
       <% if policy(@food_tour).edit? %>
-          <%= link_to "Update", edit_food_tour_path(@food_tour) %>
-          <%= link_to "Delete", food_tour_path, method: :delete, data: { confirm: 'Are you sure?'} %>
+          <%= link_to "Update", edit_food_tour_path(@food_tour), class: "btn btn-warning" %>
+          <%= link_to "Delete", food_tour_path, method: :delete, data: { confirm: 'Are you sure?'} , class: "btn btn-danger" %>
       <% end %>
 
     </div>
