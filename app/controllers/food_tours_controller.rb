@@ -14,6 +14,7 @@ class FoodToursController < ApplicationController
 
   def create
     @food_tour = FoodTour.new(food_tour_params)
+    @food_tour.user_id = current_user.id
     if @food_tour.save
       redirect_to food_tour_path(@food_tour)
     else
@@ -36,7 +37,7 @@ class FoodToursController < ApplicationController
   end
 
   def food_tour_params
-    params.require(:food_tour).permit(:title, :description, :city, :price, :dates, :cuisine)
+    params.require(:food_tour).permit(:title, :description, :city, :price, :dates, :cuisine, :photo, :photo_cache)
   end
 end
 
