@@ -10,6 +10,7 @@ class FoodToursController < ApplicationController
   end
 
   def show
+    @booking = Booking.new
     authorize @food_tour
   end
 

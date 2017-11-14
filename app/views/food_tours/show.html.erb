@@ -10,15 +10,22 @@
       <h3>Dates: <%= @food_tour.dates %></h3>
       <h3>Description</h3>
       <p><%= @food_tour.description %></p>
-
       <% if policy(@food_tour).edit? %>
           <%= link_to "Update", edit_food_tour_path(@food_tour), class: "btn btn-warning" %>
           <%= link_to "Delete", food_tour_path, method: :delete, data: { confirm: 'Are you sure?'} , class: "btn btn-danger" %>
       <% end %>
-
     </div>
 
+<h2>Create booking</h2>
+   <div class="card">
+     <%= simple_form_for [@food_tour, @booking] do |f| %>
+        <%= f.input :date, as: :string, required: false, input_html: {class: "datepicker"} %>
+      <%= f.button :submit, class: 'btn btn-primary' %>
+    <% end %>
+   </div>
   </div>
 </div>
 
 <%= cl_image_tag @food_tour.photo %>
+
+
