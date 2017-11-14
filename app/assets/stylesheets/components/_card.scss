@@ -1,14 +1,14 @@
+$card-margin-top: 20px;
+
 .card {
-  margin-bottom: 33px;
-  height: 180px;
+  margin-top: $card-margin-top;
+  height: calc((100vh - 70px - #{$card-margin-top } * 3 ) / 2 );
   text-shadow: 0 1px 3px rgba(0,0,0,0.6);
   background-size: cover !important;
   background-position: center;
   color: white;
-  margin-top: 10px;
-  padding-left: 33px;
-  padding-right: 33px;
-  padding-bottom: 33px;
+
+  padding: 10px;
   border-radius: 7px;
   // border: solid;
   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 2px 2px rgba(0,0,0,0.24);
@@ -21,4 +21,10 @@
 .card:hover {
   box-shadow: 0 16px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
+
+
+// // .card-show {
+//   width: 40vh;
+//   height: 40vh;
+// }
 
