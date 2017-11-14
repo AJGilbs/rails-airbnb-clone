@@ -1,15 +1,18 @@
-<h1><%= @food_tour.title %></h1>
-</div>
-
 <div class="container">
   <div class="wrapper">
 
     <div class="card-show">
+      <h1><%= @food_tour.title %></h1>
+      <h3>City: <%= @food_tour.city %></h3>
+      <h3>cuisine: <%= @food_tour.cuisine %></h3>
+      <h3>Price:<%= @food_tour.price %></h3>
+      <h3>Dates: <%= @food_tour.dates %></h3>
       <h3>Description</h3>
-      <h4><%= @food_tour.description %></h4>
+      <p><%= @food_tour.description %></p>
 
     </div>
 
   </div>
 </div>
 
+<%= cl_image_tag @food_tour.photo %>
