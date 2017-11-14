@@ -4,7 +4,9 @@ class FoodTourPolicy < ApplicationPolicy
       scope.all
     end
   end
-
+   def index?
+    true
+  end
   def update?
     record.user == user
   end

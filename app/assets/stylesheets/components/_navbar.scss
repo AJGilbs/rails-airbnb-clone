@@ -75,3 +75,33 @@
   border-left: 1px solid #E6E6E6;
   border-top: 1px solid #E6E6E6;
 }
+
+.log-out {
+  font-size: 15px;
+  margin-left: 20px;
+  font-weight: lighter;
+  color: #999999;
+}
+
+.log-out:hover {
+  text-decoration: none;
+  color: black;
+}
+
+.sign-in {
+  background: transparent;
+  color: #999999;
+  border: 1px solid #999999;
+  border-radius: 25px;
+  font-size: 15px;
+}
+
+.sign-up {
+  background: transparent;
+  color: #999999;
+  border: 1px solid #999999;
+  margin-left: 10px;
+  border-radius: 25px;
+  font-size: 15px;
+
+}
