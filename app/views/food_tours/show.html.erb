@@ -2,6 +2,7 @@
   <div class="wrapper">
 
     <div class="card-show">
+
       <h1><%= @food_tour.title %></h1>
       <h3>City: <%= @food_tour.city %></h3>
       <h3>cuisine: <%= @food_tour.cuisine %></h3>
@@ -9,6 +10,10 @@
       <h3>Dates: <%= @food_tour.dates %></h3>
       <h3>Description</h3>
       <p><%= @food_tour.description %></p>
+      <% if policy(@food_tour).edit? %>
+          <%= link_to "Update", edit_food_tour_path(@food_tour), class: "btn btn-warning" %>
+          <%= link_to "Delete", food_tour_path, method: :delete, data: { confirm: 'Are you sure?'} , class: "btn btn-danger" %>
+      <% end %>
     </div>
 
 <h2>Create booking</h2>
