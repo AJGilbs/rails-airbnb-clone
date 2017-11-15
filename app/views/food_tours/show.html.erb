@@ -32,12 +32,10 @@
     </div>
 
     <div class="col-xs-12 col-md-6">
-       <div>
-         <%= simple_form_for [@food_tour, @booking] do |f| %>
-            <%= f.input :date, as: :string, required: false, input_html: {class: "datepicker"} %>
-          <%= f.button :submit, class: 'btn btn-primary' %>
-        <% end %>
-       </div>
+       <%= simple_form_for [@food_tour, @booking] do |f| %>
+          <%= f.input :date, as: :string, required: false, input_html: {class: "datepicker"} %>
+        <%= f.button :submit, class: 'btn btn-primary' %>
+      <% end %>
     </div>
   </div>
 </div>
