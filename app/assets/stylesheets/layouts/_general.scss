@@ -8,7 +8,10 @@ a {
     color: inherit;
   }
 }
-
+.bg-cover {
+  background-size: cover;
+  background-position: center;
+}
 .half-screen {
   height: 45vh;
 }
@@ -16,3 +19,34 @@ a {
 .container-margin {
   margin-top: 10px;
 }
+
+.nopadding {
+   padding: 0 !important;
+   margin: 0 !important;
+}
+
+.img-45vh {
+  // height: 45vh;
+  width: 50vh;
+}
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.flex-item {
+  min-height: 45vh;
+  flex: 0 0 50%;
+}
+
+.food-tour-img {
+  width: 100%;
+}
+
+.flex-date-cont {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+// TODO media queries for .flex-item
