@@ -20,11 +20,6 @@ a {
   margin-top: 10px;
 }
 
-.nopadding {
-   padding: 0 !important;
-   margin: 0 !important;
-}
-
 .img-45vh {
   // height: 45vh;
   width: 50vh;
@@ -41,6 +36,15 @@ a {
 
 .food-tour-img {
   width: 100%;
+}
+
+.center-list {
+  // display: flex;
+  // justify-content: space-around;
+  width: 100%;
+  padding: 10px 30px;
+  text-align: left;
+  background-color: white;
 }
 
 .flex-date-cont {

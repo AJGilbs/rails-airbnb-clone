@@ -11,19 +11,28 @@
 <% end %>
 </div>
 
-<div class="flex-item">
-  <h1><%= @food_tour.title %></h1>
-  <i class="fa fa-map-marker" aria-hidden="true"></i><h3><%= @food_tour.city %></h3>
-  <h3><i class="fa fa-cutlery" aria-hidden="true"></i>
-<%= @food_tour.cuisine %></h3>
-  <h3>Price:<%= @food_tour.price %></h3>
-  <h3>Dates: <%= @food_tour.dates %></h3>
-  <h3>Description</h3>
-  <p><%= @food_tour.description %></p>
-  <% if policy(@food_tour).edit? %>
-      <%= link_to "Update", edit_food_tour_path(@food_tour), class: "btn btn-warning" %>
-      <%= link_to "Delete", food_tour_path, method: :delete, data: { confirm: 'Are you sure?'} , class: "btn btn-danger" %>
-  <% end %>
+<div class="flex-item flex-date-cont">
+  <div class="center-list">
+    <h3 class="text-center"><%= @food_tour.title %></h3>
+    <div class="row">
+      <div class="col-xs-6"><i class="fa fa-map-marker" aria-hidden="true"></i> <%= @food_tour.city %></div>
+      <div class="col-xs-6"><i class="fa fa-usd" aria-hidden="true"></i> <%= @food_tour.price %></div>
+      <div class="col-xs-6"><i class="fa fa-cutlery" aria-hidden="true"></i> <%= @food_tour.cuisine %></div>
+      <div class="col-xs-6"><i class="fa fa-calendar" aria-hidden="true"></i> <%= @food_tour.dates %></div>
+    </div>
+
+    <hr>
+    <p><%= @food_tour.description %></p>
+
+    <% if policy(@food_tour).edit? %>
+        <%= link_to edit_food_tour_path(@food_tour) do %>
+          <h5><i class="fa fa-pencil" aria-hidden="true"></i></h5>
+        <% end %>
+        <%= link_to food_tour_path, method: :delete, data: { confirm: 'Are you sure?'} do %>
+          <h5><i class="fa fa-trash-o" aria-hidden="true"></i></h5>
+        <% end %>
+    <% end %>
+  </div>
 </div>
 
 <div class="flex-item">
