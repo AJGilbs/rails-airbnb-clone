@@ -3,7 +3,7 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-md-12 offset-md-1">
-      <h1><%= cl_image_tag current_user.avatar, class:"avatar-large" %> <%= @user.first_name %>'s Dashboard</h1>
+      <h1> Your Dashboard </h1>
     </div>
   </div>
 </div>
@@ -20,8 +20,8 @@
               <p><%= booking.food_tour.description %></p>
             </div>
             <ul class="list-inline product-controls hidden-sm hidden-xs">
-              <li><%= booking.food_tour.start_date %></li>
-              <li><%= booking.food_tour.end_date %></li>
+              <li><%= booking.food_tour.start_date %></li> to
+              <li><%= booking.food_tour.end_date %></li> -
               <li><%= booking.food_tour.price %></li>
               <li><i class="fa fa-usd" aria-hidden="true"></i></li>
               <li><%= link_to edit_food_tour_path(booking.food_tour) do %>
@@ -53,8 +53,8 @@
           </div>
 
           <ul class="list-inline product-controls hidden-sm hidden-xs">
-            <li><%= food_tour.start_date %></li>
-            <li><%= food_tour.end_date %></li>
+            <li><%= food_tour.start_date %></li> to
+            <li><%= food_tour.end_date %></li> -
             <li><%= food_tour.price %></li>
             <li><i class="fa fa-usd" aria-hidden="true"></i></li>
             <li><%= link_to edit_food_tour_path(food_tour) do %>
