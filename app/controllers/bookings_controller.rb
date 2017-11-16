@@ -23,7 +23,8 @@ class BookingsController < ApplicationController
      @booking.user = current_user
      @booking.food_tour = @food_tour
      if @booking.save
-      redirect_to root_path
+      authorize @booking
+      # redirect_to dashboard_path
     else
       render 'new'
     end
