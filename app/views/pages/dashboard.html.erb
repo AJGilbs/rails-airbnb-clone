@@ -3,7 +3,7 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-md-12 offset-md-1">
-      <h1><%= cl_image_tag current_user.avatar, class:"avatar-large" %> <%= @user.first_name %>'s dashboard</h1>
+      <h1><%= cl_image_tag current_user.avatar, class:"avatar-large" %> <%= @user.first_name %>'s Dashboard</h1>
     </div>
   </div>
 </div>
@@ -11,7 +11,7 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-md-12 offset-md-1">
-      <h3>Tours I've booked</h3>
+      <h3>Tours I've Booked</h3>
       <% @user.bookings.each do |booking| %>
           <div class="product">
             <%= cl_image_tag booking.food_tour.photo, class:"product-image hidden-xs" %>
@@ -42,7 +42,7 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-lg-12 offset-lg-1">
-      <h3>Tours im running</h3>
+      <h3>Tours I'm Running</h3>
 
       <% @user.food_tours.each do |food_tour| %>
         <div class="product">
