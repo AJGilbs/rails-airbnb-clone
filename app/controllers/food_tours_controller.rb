@@ -13,7 +13,6 @@ class FoodToursController < ApplicationController
       marker.lng food_tour.longitude
     end
       # marker.infowindow render_to_string(partial: "/flats/map_box", locals: { flat: flat })
-
   end
 
   def show
@@ -21,7 +20,6 @@ class FoodToursController < ApplicationController
     @food_tour_coordinates = { lat: @food_tour.latitude, lng: @food_tour.longitude }
     authorize @food_tour
     @hash = Gmaps4rails.build_markers(@food_tour) do |food_tour, marker|
-
       marker.lat food_tour.latitude
       marker.lng food_tour.longitude
     end
