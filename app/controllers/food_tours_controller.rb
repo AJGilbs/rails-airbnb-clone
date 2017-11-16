@@ -3,6 +3,7 @@ class FoodToursController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
+    # return redirect_to roo_path if current.age < 18
     if params[:q]
       @food_tours = policy_scope(FoodTour).where("city iLIKE '%#{params[:q]}%' OR location iLIKE '%#{params[:q]}%'")
     else
@@ -59,7 +60,8 @@ class FoodToursController < ApplicationController
   def destroy
     authorize @food_tour
     @food_tour.destroy
-    redirect_to root_path
+    redirect_to dashboard_path, notice: "Done!"
+    # redirect_to request.referer.include?('food_tours')
   end
 
   private
