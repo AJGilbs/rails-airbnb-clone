@@ -4,11 +4,10 @@ class FoodToursController < ApplicationController
 
   def index
     if params[:q]
-      @food_tours = policy_scope(FoodTour).where('city iLIKE ?', "%#{params[:q]}%")
+      @food_tours = policy_scope(FoodTour).where("city iLIKE '%#{params[:q]}%' OR location iLIKE '%#{params[:q]}%'")
     else
       @food_tours = policy_scope(FoodTour)
     end
-
     @hash = Gmaps4rails.build_markers(@food_tours) do |food_tour, marker|
       marker.lat food_tour.latitude
       marker.lng food_tour.longitude
@@ -67,7 +66,7 @@ class FoodToursController < ApplicationController
   end
 
   def food_tour_params
-    params.require(:food_tour).permit(:title, :description, :city, :price, :dates, :cuisine, :photo, :photo_cache, :search)
+    params.require(:food_tour).permit(:title, :description, :city, :price, :dates, :cuisine, :location, :photo, :photo_cache, :search)
   end
 end
 
