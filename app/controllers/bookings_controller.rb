@@ -1,7 +1,6 @@
 class BookingsController < ApplicationController
   before_action :set_food_tour, only: [ :create ]
 
-
   def edit
    @booking = Booking.find(params[:id])
   end
