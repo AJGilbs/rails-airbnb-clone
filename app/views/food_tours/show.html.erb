@@ -21,6 +21,12 @@ function bindSweetAlertButtonDemo() {
   });
 }
 bindSweetAlertButtonDemo();
+let createBtn = document.getElementById('sweet-alert-demo')
+createBtn.addEventListener('click', () => {
+  document.body.addEventListener('click', () => {
+    window.location.href = "http://localhost:3000/dashboard";
+  })
+})
 </script>
 
 </div>
