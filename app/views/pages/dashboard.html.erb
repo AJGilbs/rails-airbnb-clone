@@ -23,7 +23,8 @@
           </div>
 
           <ul class="list-inline product-controls hidden-sm hidden-xs">
-            <li><%= booking.food_tour.dates %></li>
+            <li><%= booking.food_tour.start_date %></li>
+            <li><%= booking.food_tour.end_date %></li>
             <li><%= booking.food_tour.price %></li>
             <li><i class="fa fa-usd" aria-hidden="true"></i></li>
             <li><%= link_to edit_food_tour_path(booking.food_tour) do %>
@@ -55,7 +56,8 @@
           </div>
 
           <ul class="list-inline product-controls hidden-sm hidden-xs">
-            <li><%= food_tour.dates %></li>
+            <li><%= food_tour.start_date %></li>
+            <li><%= food_tour.end_date %></li>
             <li><%= food_tour.price %></li>
             <li><i class="fa fa-usd" aria-hidden="true"></i></li>
             <li><%= link_to edit_food_tour_path(food_tour) do %>
