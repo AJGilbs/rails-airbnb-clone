@@ -11,32 +11,29 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-md-12 offset-md-1">
-      <h3>Tours's I've booked</h3>
-
+      <h3>Tours I've booked</h3>
       <% @user.bookings.each do |booking| %>
-
-        <div class="product">
-          <%= cl_image_tag booking.food_tour.photo, class:"product-image hidden-xs" %>
-          <div class='product-body'>
-            <h3><%= booking.food_tour.title %></h3>
-            <p><%= booking.food_tour.description %></p>
+          <div class="product">
+            <%= cl_image_tag booking.food_tour.photo, class:"product-image hidden-xs" %>
+            <div class='product-body'>
+              <h3><%= booking.food_tour.title %></h3>
+              <p><%= booking.food_tour.description %></p>
+            </div>
+            <ul class="list-inline product-controls hidden-sm hidden-xs">
+              <li><%= booking.food_tour.start_date %></li>
+              <li><%= booking.food_tour.end_date %></li>
+              <li><%= booking.food_tour.price %></li>
+              <li><i class="fa fa-usd" aria-hidden="true"></i></li>
+              <li><%= link_to edit_food_tour_path(booking.food_tour) do %>
+                <i class="fa fa-pencil" aria-hidden="true"></i>
+              <% end %></li>
+              <li><%= link_to booking_path(booking), method: :delete, data: { confirm: 'Are you sure?'} do %>
+                <i class="fa fa-trash-o" aria-hidden="true"></i>
+              <% end %></li>
+            </ul>
+            <%= link_to '', food_tour_path(booking.food_tour), class: 'food-card-link' %>
           </div>
-
-          <ul class="list-inline product-controls hidden-sm hidden-xs">
-            <li><%= booking.food_tour.start_date %></li>
-            <li><%= booking.food_tour.end_date %></li>
-            <li><%= booking.food_tour.price %></li>
-            <li><i class="fa fa-usd" aria-hidden="true"></i></li>
-            <li><%= link_to edit_food_tour_path(booking.food_tour) do %>
-              <h5><i class="fa fa-pencil" aria-hidden="true"></i></h5>
-            <% end %></li>
-            <li><%= link_to food_tour_path(booking.food_tour), method: :delete, data: { confirm: 'Are you sure?'} do %>
-              <h5><i class="fa fa-trash-o" aria-hidden="true"></i></h5>
-            <% end %></li>
-          </ul>
-        </div>
       <% end %>
-
     </div>
   </div>
 </div>
@@ -45,7 +42,7 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-lg-12 offset-lg-1">
-      <h3>Tours's im running</h3>
+      <h3>Tours im running</h3>
 
       <% @user.food_tours.each do |food_tour| %>
         <div class="product">
@@ -61,12 +58,13 @@
             <li><%= food_tour.price %></li>
             <li><i class="fa fa-usd" aria-hidden="true"></i></li>
             <li><%= link_to edit_food_tour_path(food_tour) do %>
-              <h5><i class="fa fa-pencil" aria-hidden="true"></i></h5>
+              <i class="fa fa-pencil" aria-hidden="true"></i>
             <% end %></li>
             <li><%= link_to food_tour_path(food_tour), method: :delete, data: { confirm: 'Are you sure?'} do %>
-              <h5><i class="fa fa-trash-o" aria-hidden="true"></i></h5>
+              <i class="fa fa-trash-o" aria-hidden="true"></i>
             <% end %></li>
           </ul>
+          <%= link_to '', food_tour_path(food_tour), class: 'food-card-link' %>
         </div>
       <% end %>
 
