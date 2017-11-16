@@ -31,7 +31,12 @@ class FoodToursController < ApplicationController
   end
 
   def create
-    @food_tour = FoodTour.new(food_tour_params)
+    dates = {}
+    match_data = params[:dates].match(/([)\d\-]+) to ([\d\-]+)/)
+    dates[:start_date] = match_data[1]
+    dates[:end_date] = match_data[2]
+
+    @food_tour = FoodTour.new(food_tour_params.merge(dates))
     @food_tour.user_id = current_user.id
     authorize @food_tour
     if @food_tour.save
@@ -64,7 +69,7 @@ class FoodToursController < ApplicationController
   end
 
   def food_tour_params
-    params.require(:food_tour).permit(:title, :description, :city, :price, :dates, :cuisine, :location, :photo, :photo_cache, :search)
+    params.require(:food_tour).permit(:title, :description, :city, :price, :cuisine, :location, :photo, :photo_cache, :search)
   end
 end
 
