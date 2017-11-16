@@ -8,4 +8,8 @@ class PagesController < ApplicationController
       marker.lng food_tour.longitude
     end
   end
+
+  def dashboard
+    @user = current_user
+  end
 end
