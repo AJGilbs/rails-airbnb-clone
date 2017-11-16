@@ -11,6 +11,10 @@ class FoodTourPolicy < ApplicationPolicy
     record.user == user
   end
 
+  def show?
+    true
+  end
+
    def create?
     return true
   end
