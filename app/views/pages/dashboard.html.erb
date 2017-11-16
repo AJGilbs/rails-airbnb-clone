@@ -1,0 +1,35 @@
+<% content_for(:title, @user.first_name) %>
+
+<h1><%= cl_image_tag current_user.avatar, class:"avatar-large" %> <%= @user.first_name %>'s dashboard</h1>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-lg-10 offset-lg-1">
+      <h3>Tours's im running</h3>
+
+      <% @user.food_tours.each do |food_tour| %>
+          <div class="product">
+            <%= cl_image_tag food_tour.photo, class:"product-image hidden-xs" %>
+            <div class='product-body'>
+              <h3><%= food_tour.title %></h3>
+              <p><%= food_tour.description %></p>
+            </div>
+
+            <ul class="list-inline product-controls hidden-sm hidden-xs">
+              <li><%= food_tour.dates %></li>
+              <li><%= food_tour.price %></li>
+              <li><i class="fa fa-usd" aria-hidden="true"></i></li>
+              <li><%= link_to edit_food_tour_path(food_tour) do %>
+                <h5><i class="fa fa-pencil" aria-hidden="true"></i></h5>
+              <% end %></li>
+              <li><%= link_to food_tour_path(food_tour), method: :delete, data: { confirm: 'Are you sure?'} do %>
+                <h5><i class="fa fa-trash-o" aria-hidden="true"></i></h5>
+              <% end %></li>
+            </ul>
+          </div>
+      <% end %>
+
+    </div>
+  </div>
+</div>
+

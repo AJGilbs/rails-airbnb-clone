@@ -7,8 +7,28 @@
 <div class="flex-item flex-date-cont">
  <%= simple_form_for [@food_tour, @booking] do |f| %>
     <%= f.input :date, as: :string, label: false, required: false, input_html: {class: "datepicker"} %>
-    <%= f.button :submit, class: 'btn btn-primary' %>
+    <%= f.button :submit, id: 'sweet-alert-demo' %>
 <% end %>
+
+<script>
+function bindSweetAlertButtonDemo() {
+  document.getElementById('sweet-alert-demo').addEventListener('click', () => {
+    swal({
+      title: "Awesome!",
+      text: "Congrats, food tour booked!",
+      icon: "success"
+    })
+  });
+}
+bindSweetAlertButtonDemo();
+let createBtn = document.getElementById('sweet-alert-demo')
+createBtn.addEventListener('click', () => {
+  document.body.addEventListener('click', () => {
+    window.location.href = "http://localhost:3000/dashboard";
+  })
+})
+</script>
+
 </div>
 
 <div class="flex-item flex-date-cont">

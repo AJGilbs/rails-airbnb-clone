@@ -5,3 +5,5 @@ loadDynamicBannerText();
 
 import "plugins/flatpickr"
 
+import { bindSweetAlertButtonDemo } from '../components/alert';
+bindSweetAlertButtonDemo();

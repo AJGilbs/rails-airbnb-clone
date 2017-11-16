@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: :home
+  skip_before_action :authenticate_user!, only: [:home, :dashboard]
   def home
      @food_tours = FoodTour.where.not(latitude: nil, longitude: nil)
 
@@ -7,5 +7,9 @@ class PagesController < ApplicationController
       marker.lat food_tour.latitude
       marker.lng food_tour.longitude
     end
+  end
+
+  def dashboard
+    @user = current_user
   end
 end
