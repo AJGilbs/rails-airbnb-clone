@@ -5,12 +5,7 @@
 </div>
 
 <div class="flex-item flex-date-cont">
- <%= simple_form_for [@food_tour, @booking] do |f| %>
-    <%= f.input :date, as: :string, label: false, required: false, input_html: {class: "datepicker"} %>
-    <%= f.button :submit, id: 'sweet-alert-demo' %>
-<% end %>
-<input type="hidden" value="<%= @food_tour.start_date %>" id="foodTourStartDate">
-<input type="hidden" value="<%= @food_tour.end_date %>" id="foodTourEndDate">
+  <%= render 'bookings/form_booking' %>
 
 
 <script>
