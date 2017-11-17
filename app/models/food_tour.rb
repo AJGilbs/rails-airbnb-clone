@@ -3,6 +3,7 @@ class FoodTour < ApplicationRecord
   pg_search_scope :tour_search, against: [ :city, :country]
 
   has_many :bookings, dependent: :destroy
+  has_many :reviews
   belongs_to :user
 
   mount_uploader :photo, PhotoUploader

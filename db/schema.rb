@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20171116135947) do
-=======
-ActiveRecord::Schema.define(version: 20171116151700) do
->>>>>>> 36d30982fc4148900b0acff07f3801959552428e
+ActiveRecord::Schema.define(version: 20171116173140) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,12 +39,18 @@ ActiveRecord::Schema.define(version: 20171116151700) do
     t.float "longitude"
     t.string "location"
     t.integer "capacity"
-<<<<<<< HEAD
-=======
     t.date "start_date"
     t.date "end_date"
->>>>>>> 36d30982fc4148900b0acff07f3801959552428e
     t.index ["user_id"], name: "index_food_tours_on_user_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer "rating"
+    t.string "content"
+    t.bigint "food_tour_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["food_tour_id"], name: "index_reviews_on_food_tour_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -74,4 +76,5 @@ ActiveRecord::Schema.define(version: 20171116151700) do
   add_foreign_key "bookings", "food_tours"
   add_foreign_key "bookings", "users"
   add_foreign_key "food_tours", "users"
+  add_foreign_key "reviews", "food_tours"
 end
