@@ -2,86 +2,89 @@
 
 <div class="flex-container">
   <div class="flex-item bg-cover" style="background-image: url(<%= cl_image_path @food_tour.photo? ? @food_tour.photo : 'fysedljjycu4kwcqsasb' %>)">
-</div>
+  </div>
 
-<% if current_user != @food_tour.user || !user_signed_in? %>
-<div class="flex-item flex-date-cont">
-  <%= render 'bookings/form_booking' %>
-<% else %>
-<% if !@food_tour.bookings.blank? %>
-  <% @food_tour.bookings.each do |booking| %>
-    <%= booking.user.first_name %>
-  <% end %>
-<% else %>
-    <p> No attendees at the moment </p>
-<% end %>
-<% end %>
+  <div class="flex-item">
+    <div class="center-list">
+      <h3 class="text-center"><%= @food_tour.title %></h3>
+      <div class="row">
+        <div class="col-xs-6"><i class="fa fa-map-marker" aria-hidden="true"></i> <%= @food_tour.city %></div>
+        <div class="col-xs-6"><i class="fa fa-usd" aria-hidden="true"></i> <%= @food_tour.price %></div>
+        <div class="col-xs-6"><i class="fa fa-cutlery" aria-hidden="true"></i> <%= @food_tour.cuisine %></div>
+        <div class="col-xs-6"><i class="fa fa-calendar" aria-hidden="true"></i> Start: <%= @food_tour.start_date %></div>
+        <div class="col-xs-6"><i class="fa fa-calendar" aria-hidden="true"></i> End: <%= @food_tour.end_date %></div>
+      </div>
+      <div class="row">
+        <% if current_user != @food_tour.user || !user_signed_in? %>
+          <div class="form-inline text-center">
+            <%= render 'bookings/form_booking' %>
+          </div>
+        <% end %>
+      </div>
+      <hr>
+      <p><%= @food_tour.description %></p>
 
-<script>
-function bindSweetAlertButtonDemo() {
-  document.getElementById('sweet-alert-demo').addEventListener('click', () => {
-    swal({
-      title: "Awesome!",
-      text: "Congrats, food tour booked!",
-      icon: "success"
-    })
-  });
-}
-bindSweetAlertButtonDemo();
-let createBtn = document.getElementById('sweet-alert-demo')
-createBtn.addEventListener('click', () => {
-  document.body.addEventListener('click', () => {
-    window.location.href = "http://localhost:3000/dashboard";
-  })
-})
-</script>
-
-</div>
-
-<div class="flex-item flex-date-cont">
-  <div class="center-list">
-    <h3 class="text-center"><%= @food_tour.title %></h3>
-    <div class="row">
-      <div class="col-xs-6"><i class="fa fa-map-marker" aria-hidden="true"></i> <%= @food_tour.city %></div>
-      <div class="col-xs-6"><i class="fa fa-usd" aria-hidden="true"></i> <%= @food_tour.price %></div>
-      <div class="col-xs-6"><i class="fa fa-cutlery" aria-hidden="true"></i> <%= @food_tour.cuisine %></div>
-      <div class="col-xs-6"><i class="fa fa-calendar" aria-hidden="true"></i> Start: <%= @food_tour.start_date %></div>
-      <div class="col-xs-6"><i class="fa fa-calendar" aria-hidden="true"></i> End: <%= @food_tour.end_date %></div>
-    </div>
-
-    <hr>
-    <p><%= @food_tour.description %></p>
-
-    <% if policy(@food_tour).edit? %>
+      <% if policy(@food_tour).edit? %>
         <%= link_to edit_food_tour_path(@food_tour) do %>
-          <h5><i class="fa fa-pencil" aria-hidden="true"></i></h5>
+          <i class="fa fa-pencil" aria-hidden="true"></i>
         <% end %>
         <%= link_to food_tour_path, method: :delete, data: { confirm: 'Are you sure?'} do %>
-          <h5><i class="fa fa-trash-o" aria-hidden="true"></i></h5>
+          <i class="fa fa-trash-o" aria-hidden="true"></i>
         <% end %>
-    <% end %>
+      <% else %>
+        <% if !@food_tour.bookings.blank? %>
+          <% @food_tour.bookings.each do |booking| %>
+            <%= image_tag (booking.user.avatar), class: "avatar" %>
+            <%= booking.user.first_name %>
+          <% end %>
+        <% else %>
+            <p> No attendees at the moment </p>
+        <% end %>
+      <% end %>
+    </div>
   </div>
+
+  <script>
+  function bindSweetAlertButtonDemo() {
+    document.getElementById('sweet-alert-demo').addEventListener('click', () => {
+      swal({
+        title: "Awesome!",
+        text: "Congrats, food tour booked!",
+        icon: "success"
+      })
+    });
+  }
+  bindSweetAlertButtonDemo();
+  let createBtn = document.getElementById('sweet-alert-demo')
+  createBtn.addEventListener('click', () => {
+    document.body.addEventListener('click', () => {
+      window.location.href = "http://localhost:3000/dashboard";
+    })
+  })
+  </script>
 </div>
 
-<div class="flex-item">
-  <div id="map-show" style="width: 100%; height: 45vh;"></div>
+<div class="flex-container">
+
+  <div class="flex-items" style="width: 50%; height: 45vh;">
+    <div id="reviews">
+      <h2><%= pluralize @food_tour.reviews.size, "review" %></h2>
+      <% if @food_tour.reviews.blank? %>
+        Be the first to leave a review for <%= @food_tour.title %>
+      <% else %>
+        <% @food_tour.reviews.each do |review| %>
+          <%= render 'reviews/show_review', review: review %>
+        <% end %>
+      <% end %>
+    </div>
+    <%= render 'reviews/form_review', food_tour: @food_tour, review: @review %>
+  </div>
+
+  <div class="flex-item">
+    <div id="map-show" style="width: 100%; height: 45vh;"></div>
+  </div>
+
 </div>
-
-<h2>
-  <%= pluralize @food_tour.reviews.size, "review" %>
-</h2>
-
-<div id="reviews">
-  <% if @food_tour.reviews.blank? %>
-    Be the first to leave a review for <%= @food_tour.title %>
-  <% else %>
-    <% @food_tour.reviews.each do |review| %>
-      <%= render 'reviews/show_review', review: review %>
-    <% end %>
-  <% end %>
-</div>
-
-<%= render 'reviews/form_review', food_tour: @food_tour, review: @review %>
 
 
 <% content_for(:after_js) do %>
