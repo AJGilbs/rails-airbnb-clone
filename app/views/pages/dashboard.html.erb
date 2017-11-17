@@ -3,7 +3,7 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-md-12 offset-md-1">
-      <h1><%= cl_image_tag current_user.avatar, class:"avatar-large" %> <%= @user.first_name %>'s dashboard</h1>
+      <h1> Your Dashboard </h1>
     </div>
   </div>
 </div>
@@ -11,7 +11,7 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-md-12 offset-md-1">
-      <h3>Tours I've booked</h3>
+      <h3>Tours I've Booked</h3>
       <% @user.bookings.each do |booking| %>
           <div class="product">
             <%= cl_image_tag booking.food_tour.photo, class:"product-image hidden-xs" %>
@@ -20,7 +20,12 @@
               <p><%= booking.food_tour.description %></p>
             </div>
             <ul class="list-inline product-controls hidden-sm hidden-xs">
+<<<<<<< HEAD
               <li><%= booking.date %></li>
+=======
+              <li><%= booking.food_tour.start_date %></li> to
+              <li><%= booking.food_tour.end_date %></li> -
+>>>>>>> 44b81f689f1ffd2f8a179dacb5399f135bc6cfb9
               <li><%= booking.food_tour.price %></li>
               <li><i class="fa fa-usd" aria-hidden="true"></i></li>
               <li><%= link_to edit_booking_path(booking) do %>
@@ -41,7 +46,7 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-lg-12 offset-lg-1">
-      <h3>Tours im running</h3>
+      <h3>Tours I'm Running</h3>
 
       <% @user.food_tours.each do |food_tour| %>
         <div class="product">
@@ -52,8 +57,8 @@
           </div>
 
           <ul class="list-inline product-controls hidden-sm hidden-xs">
-            <li><%= food_tour.start_date %></li>
-            <li><%= food_tour.end_date %></li>
+            <li><%= food_tour.start_date %></li> to
+            <li><%= food_tour.end_date %></li> -
             <li><%= food_tour.price %></li>
             <li><i class="fa fa-usd" aria-hidden="true"></i></li>
             <li><%= link_to edit_food_tour_path(food_tour) do %>
