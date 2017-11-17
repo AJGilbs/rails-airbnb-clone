@@ -3,17 +3,22 @@ class BookingsController < ApplicationController
 
   def edit
    @booking = Booking.find(params[:id])
+   @food_tour = @booking.food_tour
+   authorize @booking
   end
 
   def update
-   @booking.update
-   redirect_to root_path
+    @booking = Booking.find(params[:id])
+    authorize @booking
+    @booking.update(booking_params)
+    redirect_to dashboard_path, notice: 'Successfully Updated!'
   end
 
   def destroy
     @booking = Booking.find(params[:id])
+    authorize @booking
     @booking.destroy
-    redirect_to root_path
+    redirect_to dashboard_path, notice: 'Done!'
   end
 
   def create
