@@ -12,5 +12,6 @@
   },
   "devDependencies": {
     "webpack-dev-server": "^2.9.4"
-  }
+  },
+  "version": "8.0.0"
 }
