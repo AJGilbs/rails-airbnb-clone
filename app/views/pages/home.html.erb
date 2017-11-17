@@ -99,6 +99,9 @@
         <%= link_to food_tour_path(food_tour) do %>
           <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url( '<%= cl_image_path(food_tour.photo? ? food_tour.photo : 'fysedljjycu4kwcqsasb') %>' );">
               <h1 class="text-center"><%= food_tour.title %></h1>
+               <div>
+                 <%= cl_image_tag food_tour.user.avatar, class: 'card-av' %>
+               </div>
               <div class="stars">
                 <% if !food_tour.average_rating.nil? %>
                   <% food_tour.average_rating.times do %>
