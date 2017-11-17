@@ -99,11 +99,25 @@
         <%= link_to food_tour_path(food_tour) do %>
           <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url( '<%= cl_image_path(food_tour.photo? ? food_tour.photo : 'fysedljjycu4kwcqsasb') %>' );">
               <h1 class="text-center"><%= food_tour.title %></h1>
+              <div class="stars">
+                <% if !food_tour.average_rating.nil? %>
+                  <% food_tour.average_rating.times do %>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                  <% end %>
+
+                  <% (5 - food_tour.average_rating).times do %>
+                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                  <% end %>
+                  <% else %>
+                  <p>No reviews</p>
+                <% end %>
+              </div>
           </div>
         <% end %>
       </div>
     <% end %>
   </div>
 </div>
+
 
 <!-- then list the food_tours in cards-->

@@ -9,4 +9,15 @@ class FoodTour < ApplicationRecord
   mount_uploader :photo, PhotoUploader
   geocoded_by :city
   after_validation :geocode, if: :city_changed?
+
+  def average_rating
+    if self.reviews.count > 0
+      total = 0
+      self.reviews.each do |review|
+        total += review.rating
+      end
+      return total / self.reviews.count
+    end
+  end
+
 end
