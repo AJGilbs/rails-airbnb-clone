@@ -12,7 +12,19 @@
         <div class="col-xs-6"><i class="fa fa-usd" aria-hidden="true"></i> <%= @food_tour.price %></div>
         <div class="col-xs-6"><i class="fa fa-cutlery" aria-hidden="true"></i> <%= @food_tour.cuisine %></div>
         <div class="col-xs-6"><i class="fa fa-calendar" aria-hidden="true"></i> Start: <%= @food_tour.start_date %></div>
-        <div class="col-xs-6"><i class="fa fa-calendar" aria-hidden="true"></i> End: <%= @food_tour.end_date %></div>
+
+        <div class="col-xs-6">
+          <% if policy(@food_tour).edit? %>
+            <%= link_to edit_food_tour_path(@food_tour) do %>
+              <i class="fa fa-pencil" aria-hidden="true"></i>
+            <% end %>
+            <%= link_to food_tour_path, method: :delete, data: { confirm: 'Are you sure?'} do %>
+              <i class="fa fa-trash-o" aria-hidden="true"></i>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="col-xs-6"><i class="fa fa-calendar" aria-hidden="true"></i> End: <%= @food_tour.end_date %>
+        </div>
       </div>
       <div class="row">
         <% if current_user != @food_tour.user || !user_signed_in? %>
@@ -23,24 +35,14 @@
       </div>
       <hr>
       <p><%= @food_tour.description %></p>
-
-      <% if policy(@food_tour).edit? %>
-        <%= link_to edit_food_tour_path(@food_tour) do %>
-          <i class="fa fa-pencil" aria-hidden="true"></i>
-        <% end %>
-        <%= link_to food_tour_path, method: :delete, data: { confirm: 'Are you sure?'} do %>
-          <i class="fa fa-trash-o" aria-hidden="true"></i>
-        <% end %>
-      <% else %>
+      <hr>
         <% if !@food_tour.bookings.blank? %>
           <% @food_tour.bookings.each do |booking| %>
             <%= image_tag (booking.user.avatar), class: "avatar" %>
-            <%= booking.user.first_name %>
           <% end %>
         <% else %>
             <p> No attendees at the moment </p>
         <% end %>
-      <% end %>
     </div>
   </div>
 
@@ -66,7 +68,7 @@
 
 <div class="flex-container">
 
-  <div class="flex-items" style="width: 50%; height: 45vh;">
+  <div class="flex-items padded" style="width: 50%; height: 45vh;">
     <div id="reviews">
       <h2><%= pluralize @food_tour.reviews.size, "review" %></h2>
       <% if @food_tour.reviews.blank? %>
