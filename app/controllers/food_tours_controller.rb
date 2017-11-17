@@ -18,6 +18,7 @@ class FoodToursController < ApplicationController
 
   def show
     @booking = Booking.new
+    @review = Review.new
     @food_tour_coordinates = { lat: @food_tour.latitude, lng: @food_tour.longitude }
     authorize @food_tour
     @hash = Gmaps4rails.build_markers(@food_tour) do |food_tour, marker|

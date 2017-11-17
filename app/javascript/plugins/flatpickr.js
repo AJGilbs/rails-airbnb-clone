@@ -12,9 +12,6 @@ if (document.querySelector('.datepicker-range') != null) {
 if (document.querySelector('.datepicker') != null) {
   const startDate = document.getElementById('foodTourStartDate').value;
   const endDate = document.getElementById('foodTourEndDate').value;
-  console.log(startDate);
-  console.log(endDate);
-  debugger
 
   flatpickr(".datepicker", {
     altInput: true,

@@ -1,0 +1,15 @@
+var addBooking = document.getElementById('new_reviews')
+var reviewForm = document.getElementById('new_review')
+
+<% if @review.persisted? %>
+// 1. create the html for the review
+var newReview = "<%= j render 'reviews/show_review', review: @review %>";
+// 2. append the new review to the list
+var reviews = document.getElementById('reviews');
+reviews.insertAdjacentHTML('beforeend', newReview);
+// 3. empty out the input box
+reviewForm.innerHTML = "<%= j render 'reviews/form_review', food_tour: @food_tour, review: Review.new %>";
+<% else %>
+// 1. rerender the form partial with the new @review
+reviewForm.innerHTML = "<%= j render 'reviews/form_review', food_tour: @food_tour, review: @review %>";
+<% end %>

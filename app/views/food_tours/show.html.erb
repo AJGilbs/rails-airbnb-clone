@@ -58,6 +58,22 @@ createBtn.addEventListener('click', () => {
   <div id="map-show" style="width: 100%; height: 45vh;"></div>
 </div>
 
+<h2>
+  <%= pluralize @food_tour.reviews.size, "review" %>
+</h2>
+
+<div id="reviews">
+  <% if @food_tour.reviews.blank? %>
+    Be the first to leave a review for <%= @food_tour.title %>
+  <% else %>
+    <% @food_tour.reviews.each do |review| %>
+      <%= render 'reviews/show_review', review: review %>
+    <% end %>
+  <% end %>
+</div>
+
+<%= render 'reviews/form_review', food_tour: @food_tour, review: @review %>
+
 
 <% content_for(:after_js) do %>
   <%= javascript_tag do %>
