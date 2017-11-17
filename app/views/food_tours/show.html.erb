@@ -4,9 +4,18 @@
   <div class="flex-item bg-cover" style="background-image: url(<%= cl_image_path @food_tour.photo? ? @food_tour.photo : 'fysedljjycu4kwcqsasb' %>)">
 </div>
 
+<% if current_user != @food_tour.user || !user_signed_in? %>
 <div class="flex-item flex-date-cont">
   <%= render 'bookings/form_booking' %>
-
+<% else %>
+<% if !@food_tour.bookings.blank? %>
+  <% @food_tour.bookings.each do |booking| %>
+    <%= booking.user.first_name %>
+  <% end %>
+<% else %>
+    <p> No attendees at the moment </p>
+<% end %>
+<% end %>
 
 <script>
 function bindSweetAlertButtonDemo() {
