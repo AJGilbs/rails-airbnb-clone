@@ -9,6 +9,21 @@ a {
   }
 }
 
+.top-right {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+}
+
+#reviews {
+  height: 20vh;
+  overflow: scroll;
+}
+
+.relative {
+  position: relative;
+}
+
 .bg-cover {
   background-size: cover;
   background-position: center;
@@ -36,7 +51,7 @@ a {
 }
 
 .padded {
-  padding: 60px;
+  padding: 30px;
 }
 
 .food-tour-img {

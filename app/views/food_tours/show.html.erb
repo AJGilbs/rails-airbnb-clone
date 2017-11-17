@@ -1,7 +1,8 @@
 <% content_for(:title, @food_tour.title) %>
 
 <div class="flex-container">
-  <div class="flex-item bg-cover" style="background-image: url(<%= cl_image_path @food_tour.photo? ? @food_tour.photo : 'fysedljjycu4kwcqsasb' %>)">
+  <div class="flex-item bg-cover relative" style="background-image: url(<%= cl_image_path @food_tour.photo? ? @food_tour.photo : 'fysedljjycu4kwcqsasb' %>)">
+  <%= image_tag @food_tour.user.avatar, class:'avatar-large top-right' %>
   </div>
 
   <div class="flex-item">
@@ -68,7 +69,7 @@
 
 <div class="flex-container">
 
-  <div class="flex-items padded" style="width: 50%; height: 45vh;">
+  <div class="flex-items padded" style="width: 50%; height: 45vh">
     <div id="reviews">
       <h2><%= pluralize @food_tour.reviews.size, "review" %></h2>
       <% if @food_tour.reviews.blank? %>
