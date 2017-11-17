@@ -49,11 +49,16 @@
           <div class='product-body'>
             <h3><%= food_tour.title %></h3>
             <p><%= food_tour.description %></p>
+            <% if !food_tour.bookings.blank? %>
+              Number of booked attendees: <%= food_tour.bookings.count %>
+            <% else %>
+              <p> No attendees at the moment </p>
+            <% end %>
           </div>
 
           <ul class="list-inline product-controls hidden-sm hidden-xs">
-            <li><%= food_tour.start_date %></li> to
-            <li><%= food_tour.end_date %></li> -
+            <li><%= food_tour.start_date.strftime("%d/%m/%Y")  %></li> to
+            <li><%= food_tour.end_date.strftime("%d/%m/%Y") %></li> -
             <li><%= food_tour.price %></li>
             <li><i class="fa fa-usd" aria-hidden="true"></i></li>
             <li><%= link_to edit_food_tour_path(food_tour) do %>
