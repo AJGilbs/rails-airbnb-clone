@@ -9,6 +9,8 @@ var reviews = document.getElementById('reviews');
 reviews.insertAdjacentHTML('beforeend', newReview);
 // 3. empty out the input box
 reviewForm.innerHTML = "<%= j render 'reviews/form_review', food_tour: @food_tour, review: Review.new %>";
+var count = document.getElementById('review-count');
+count.replaceWith('<%= pluralize @food_tour.reviews.size, "review" %>')
 <% else %>
 // 1. rerender the form partial with the new @review
 reviewForm.innerHTML = "<%= j render 'reviews/form_review', food_tour: @food_tour, review: @review %>";
