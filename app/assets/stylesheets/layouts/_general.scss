@@ -9,6 +9,21 @@ a {
   }
 }
 
+.top-right {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+}
+
+#reviews {
+  height: 20vh;
+  overflow: scroll;
+}
+
+.relative {
+  position: relative;
+}
+
 .bg-cover {
   background-size: cover;
   background-position: center;
@@ -33,6 +48,10 @@ a {
 .flex-item {
   min-height: 45vh;
   flex: 0 0 50%;
+}
+
+.padded {
+  padding: 30px;
 }
 
 .food-tour-img {
@@ -61,3 +80,10 @@ a {
   width: 100px;
   border-radius: 50%;
 }
+
+.avatar {
+  height: 45px;
+  width: 45px;
+  border-radius: 50%;
+}
+
