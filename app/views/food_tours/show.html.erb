@@ -71,7 +71,7 @@
 
   <div class="flex-items padded" style="width: 50%; height: 45vh">
     <div id="reviews">
-      <h2><%= pluralize @food_tour.reviews.size, "review" %></h2>
+      <h2 id="review-count"><%= pluralize @food_tour.reviews.size, "review" %></h2>
       <% if @food_tour.reviews.blank? %>
         Be the first to leave a review for <%= @food_tour.title %>
       <% else %>
