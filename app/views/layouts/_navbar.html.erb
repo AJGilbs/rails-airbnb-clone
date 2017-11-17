@@ -20,8 +20,8 @@
     <!-- Profile picture with dropdown list -->
     <div class="navbar-wagon-item">
       <div class="dropdown">
-
-        <%= image_tag (current_user.avatar || "user.png"), class: "avatar dropdown-toggle", id: "navbar-wagon-menu", data: { toggle: 'dropdown' } %>
+        <% avatar_url = current_user.avatar? ? current_user.avatar : "user.png" %>
+        <%= image_tag avatar_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", data: { toggle: 'dropdown' } %>
 
         <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
           <li><a href="/dashboard">Dashboard</a></li>
