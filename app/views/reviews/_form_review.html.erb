@@ -1,4 +1,5 @@
 <%= simple_form_for([ food_tour, review ], remote: true) do |form| %>
+  <%= form.input :rating, input_html: { min: 0, max: 5 } %>
   <%= form.input :content, as: :text %>
   <%= form.button :submit %>
 <% end %>

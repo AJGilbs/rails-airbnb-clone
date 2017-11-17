@@ -72,7 +72,7 @@ class FoodToursController < ApplicationController
   end
 
   def food_tour_params
-    params.require(:food_tour).permit(:title, :description, :city, :price, :cuisine, :location, :photo, :photo_cache, :search)
+    params.require(:food_tour).permit(:title, :description, :city, :price, :cuisine, :capacity, :location, :photo, :photo_cache, :search)
   end
 end
 
